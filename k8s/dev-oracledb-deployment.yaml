@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xp-oracledb-aarch64
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xp-oracledb-aarch64
+  template:
+    metadata:
+      labels:
+        app: xp-oracledb-aarch64
+    spec:
+      containers:
+        - name: xp-oracledb-aarch64
+          image: xp-oracledb-aarch64:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 1521

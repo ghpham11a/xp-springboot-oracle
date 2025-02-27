@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xp-springboot-oracle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xp-springboot-oracle
+  template:
+    metadata:
+      labels:
+        app: xp-springboot-oracle
+    spec:
+      containers:
+        - name: xp-springboot-oracle
+          image: xp-springboot-oracle:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
