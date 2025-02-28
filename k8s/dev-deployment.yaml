@@ -18,3 +18,17 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: xp-springboot-oracle-configmap
+          env:
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: xp-springboot-oracle-secrets
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: xp-springboot-oracle-secrets
+                  key: SPRING_DATASOURCE_PASSWORD

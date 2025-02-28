@@ -18,3 +18,15 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 1521
+          env:
+            - name: ORACLE_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: xp-oracledb-aarch64-secrets
+                  key: ORACLE_PWD
+            - name: ORACLE_SID
+              value: ORCLCDB
+            - name: ORACLE_PDB
+              value: ORCLPDB1
+            - name: ORACLE_CHARACTERSET
+              value: AL32UTF8
